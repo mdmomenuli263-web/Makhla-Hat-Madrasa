@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#07562f"
+    >
+
+    <title>
+        Admin Panel | মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .admin-page {
+            min-height: 100vh;
+            padding: 40px 0;
+            background: #f5faf7;
+        }
+
+        .admin-container {
+            width: 92%;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .admin-header {
+            background: #07562f;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .admin-header h1 {
+            margin-bottom: 5px;
+        }
+
+        .admin-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.07);
+        }
+
+        .admin-card h2 {
+            color: #07562f;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .field label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d8e2dc;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .field textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            border-color: #07562f;
+        }
+
+        .admin-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-admin {
+            border: none;
+            cursor: pointer;
+            padding: 11px 18px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-weight: 700;
+        }
+
+        .btn-save {
+            background: #07562f;
+            color: white;
+        }
+
+        .btn-add {
+            background: #c49a2c;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #b3261e;
+            color: white;
+        }
+
+        .btn-home {
+            background: #eeeeee;
+            color: #222;
+            text-decoration: none;
+        }
+
+        .item {
+            border: 1px solid #e2e8e4;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        #editorSection {
+            display: none;
+        }
+
+        .login-box {
+            max-width: 450px;
+            margin: 80px auto;
+        }
+
+        .login-logo {
+            display: block;
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+        }
+
+        .warning {
+            background: #fff7df;
+            border-left: 4px solid #c49a2c;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        @media(max-width:520px) {
+
+            .admin-card {
+                padding: 18px;
+            }
+
+            .admin-header h1 {
+                font-size: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="admin-page">
+
+<div class="admin-container">
+
+
+    <!-- =========================
+         LOGIN
+    ========================== -->
+
+    <section id="loginSection" class="login-box">
+
+        <div class="admin-card">
+
+            <img
+                src="logo.png"
+                class="login-logo"
+                alt="মাদ্রাসার লোগো"
+            >
+
+            <h2 style="text-align:center;color:#07562f;">
+                🔐 Admin Login
+            </h2>
+
+            <p style="text-align:center;margin-bottom:20px;">
+                মাদ্রাসার ওয়েবসাইট পরিচালনা করতে লগইন করুন।
+            </p>
+
+
+            <div class="field">
+
+                <label>
+                    Admin Password
+                </label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="পাসওয়ার্ড লিখুন"
+                >
+
+            </div>
+
+
+            <button
+                class="btn-admin btn-save"
+                style="width:100%;"
+                onclick="adminLogin()"
+            >
+                🔐 Login
+            </button>
+
+
+            <div class="warning">
+
+                ⚠️ এটি বর্তমানে Frontend Demo Login।
+                বাস্তব অনলাইন ওয়েবসাইটে নিরাপদ Admin Login-এর
+                জন্য Backend Authentication প্রয়োজন।
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         EDITOR
+    ========================== -->
+
+    <section id="editorSection">
+
+
+        <div class="admin-header">
+
+            <h1>
+                ⚙️ Admin Dashboard
+            </h1>
+
+            <p>
+                মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+            </p>
+
+        </div>
+
+
+        <!-- =====================
+             BASIC INFORMATION
+        ====================== -->
+
+        <div class="admin-card">
+
+            <h2>
+                🏫 মাদ্রাসার তথ্য
+            </h2>
+
+
+            <div class="field">
+
+                <label>
+                    মাদ্রাসার নাম
+                </label>
+
+                <input
+                    id="schoolName"
+                    type="text"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    স্লোগান
+                </label>
+
+                <input
+                    id="tagline"
+                    type="text"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    মোবাইল নম্বর
+                </label>
+
+                <input
+                    id="phone"
+                    type="text"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    ই-মেইল
+                </label>
+
+                <input
+                    id="email"
+                    type="email"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    ঠিকানা
+                </label>
+
+                <input
+                    id="address"
+                    type="text"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================
+             HERO
+        ====================== -->
+
+        <div class="admin-card">
+
+            <h2>
+                🌟 হোম পেজ
+            </h2>
+
+
+            <div class="field">
+
+                <label>
+                    বড় শিরোনাম
+                </label>
+
+                <textarea
+                    id="heroTitle"
+                ></textarea>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    হোম পেজের বিবরণ
+                </label>
+
+                <textarea
+                    id="heroText"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================
+             ABOUT
+        ====================== -->
+
+        <div class="admin-card">
+
+            <h2>
+                📖 আমাদের সম্পর্কে
+            </h2>
+
+            <div class="field">
+
+                <label>
+                    বিস্তারিত
+                </label>
+
+                <textarea
+                    id="aboutText"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================
+             ADMISSION
+        ====================== -->
+
+        <div class="admin-card">
+
+            <h2>
+                📝 ভর্তি তথ্য
+            </h2>
+
+            <div class="field">
+
+                <label>
+                    ভর্তি সংক্রান্ত তথ্য
+                </label>
+
+                <textarea
+                    id="admissionText"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================
+             NOTICE
+        ====================== -->
+
+        <div class="admin-card">
+
+            <h2>
+                📢 নোটিশ
+            </h2>
+
+            <div id="noticeList"></div>
+
+            <button
+                class="btn-admin btn-add"
+                onclick="addAdminNotice()"
+            >
+                ➕ নতুন নোটিশ
+            </button>
+
+        </div>
+
+
+
+        <!-- =====================
+             EDUCATION
+        ====================== -->
+
+        <div class="admin-card">
+
+            <h2>
+                📚 শিক্ষাব্যবস্থা
+            </h2>
+
+            <div id="educationList"></div>
+
+            <button
+                class="btn-admin btn-add"
+                onclick="addAdminEducation()"
+            >
+                ➕ নতুন বিভাগ
+            </button>
+
+        </div>
+
+
+
+        <!-- =====================
+             TEACHERS
+        ====================== -->
+
+        <div class="admin-card">
+
+            <h2>
+                👨‍🏫 শিক্ষকবৃন্দ
+            </h2>
+
+            <div id="teacherList"></div>
+
+            <button
+                class="btn-admin btn-add"
+                onclick="addAdminTeacher()"
+            >
+                ➕ নতুন শিক্ষক
+            </button>
+
+        </div>
+
+
+
+        <!-- =====================
+             GALLERY
+        ====================== -->
+
+        <div class="admin-card">
+
+            <h2>
+                🖼️ গ্যালারি
+            </h2>
+
+            <div id="galleryList"></div>
+
+            <button
+                class="btn-admin btn-add"
+                onclick="addAdminGallery()"
+            >
+                ➕ নতুন ছবি
+            </button>
+
+        </div>
+
+
+
+        <!-- =====================
+             ACTIONS
+        ====================== -->
+
+        <div class="admin-card">
+
+            <h2>
+                💾 সংরক্ষণ
+            </h2>
+
+            <div class="admin-buttons">
+
+                <button
+                    class="btn-admin btn-save"
+                    onclick="saveAdminData()"
+                >
+                    💾 সব পরিবর্তন সংরক্ষণ
+                </button>
+
+
+                <button
+                    class="btn-admin btn-home"
+                    onclick="openMainWebsite()"
+                >
+                    🏠 ওয়েবসাইট দেখুন
+                </button>
+
+
+                <button
+                    class="btn-admin btn-delete"
+                    onclick="resetAdminData()"
+                >
+                    ♻️ ডিফল্টে ফিরিয়ে নিন
+                </button>
+
+
+                <button
+                    class="btn-admin btn-home"
+                    onclick="adminLogout()"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ==========================
+     JAVASCRIPT
+=========================== -->
+
+<script src="data.js"></script>
+
+<script src="config.js"></script>
+
+<script src="admin.js"></script>
+
+
+</body>
+
+</html>
