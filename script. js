@@ -1,0 +1,717 @@
+/* =====================================================
+   মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+   MAIN WEBSITE SCRIPT
+   ===================================================== */
+
+
+/* =====================================================
+   DATA LOAD
+===================================================== */
+
+const STORAGE_KEY = "madrasaWebsiteData";
+
+
+const DEFAULT_DATA = {
+
+    schoolName:
+        "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা",
+
+    tagline:
+        "শিক্ষা • শৃঙ্খলা • আদর্শ • সফলতা",
+
+    phone:
+        "01712-345678",
+
+    email:
+        "example@email.com",
+
+    address:
+        "মাকলাহাট, নিয়ামতপুর, নওগাঁ",
+
+    heroTitle:
+        "জ্ঞান অর্জন করো,<br>আলোকিত করো জীবন",
+
+    heroText:
+        "কুরআন ও সুন্নাহভিত্তিক শিক্ষা, নৈতিকতা ও আদর্শ মানুষ গড়ার লক্ষ্যে আমাদের এই পথ চলা।",
+
+    aboutText:
+        "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা একটি দ্বীনি ও নৈতিক শিক্ষাপ্রতিষ্ঠান। কুরআন ও সুন্নাহর আলোকে শিক্ষার্থীদের জ্ঞান, চরিত্র ও আদর্শ গঠনে আমরা কাজ করি।",
+
+    admissionText:
+        "নতুন শিক্ষাবর্ষে ভর্তি সংক্রান্ত তথ্য জানতে আমাদের সাথে যোগাযোগ করুন।",
+
+    notices: [
+        {
+            title:
+                "নতুন শিক্ষাবর্ষের ভর্তি কার্যক্রম",
+
+            date:
+                "২৭ আগস্ট ২০২৬"
+        },
+
+        {
+            title:
+                "মাসিক পরীক্ষা সংক্রান্ত নোটিশ",
+
+            date:
+                "২০ আগস্ট ২০২৬"
+        }
+    ],
+
+    education: [
+        {
+            title:
+                "নূরানি ও নাজেরা",
+
+            text:
+                "সঠিক উচ্চারণ ও তাজবিদসহ কুরআন শিক্ষা।"
+        },
+
+        {
+            title:
+                "হিফজ বিভাগ",
+
+            text:
+                "পরিকল্পিত পদ্ধতিতে কুরআন হিফজের ব্যবস্থা।"
+        },
+
+        {
+            title:
+                "কিতাব বিভাগ",
+
+            text:
+                "দ্বীনি জ্ঞান, আরবি ও প্রয়োজনীয় সাধারণ শিক্ষা।"
+        }
+    ],
+
+    teachers: [
+        {
+            name:
+                "নাম এখানে লিখুন",
+
+            designation:
+                "প্রধান শিক্ষক",
+
+            phone:
+                "01700-000000"
+        },
+
+        {
+            name:
+                "নাম এখানে লিখুন",
+
+            designation:
+                "সহকারী শিক্ষক",
+
+            phone:
+                "01700-000000"
+        }
+    ],
+
+    gallery: [
+        {
+            image:
+                "logo.png",
+
+            title:
+                "মাদ্রাসা"
+        }
+    ],
+
+    social: {
+        facebook: "#",
+        youtube: "#",
+        telegram: "#",
+        whatsapp: "#"
+    }
+};
+
+
+/* =====================================================
+   MERGE DATA
+===================================================== */
+
+function getWebsiteData() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(STORAGE_KEY);
+
+        if (!saved) {
+
+            return DEFAULT_DATA;
+
+        }
+
+        const savedData =
+            JSON.parse(saved);
+
+        return {
+
+            ...DEFAULT_DATA,
+
+            ...savedData
+
+        };
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Data loading error:",
+            error
+        );
+
+        return DEFAULT_DATA;
+
+    }
+
+}
+
+
+/* =====================================================
+   CURRENT DATA
+===================================================== */
+
+const websiteData =
+    getWebsiteData();
+
+
+/* =====================================================
+   SAFE TEXT
+===================================================== */
+
+function setText(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(id);
+
+    if (!element) return;
+
+    element.textContent =
+        value || "";
+
+}
+
+
+/* =====================================================
+   SAFE HTML
+===================================================== */
+
+function setHTML(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(id);
+
+    if (!element) return;
+
+    element.innerHTML =
+        value || "";
+
+}
+
+
+/* =====================================================
+   SCHOOL INFORMATION
+===================================================== */
+
+function loadSchoolInformation() {
+
+    setText(
+        "schoolName",
+        websiteData.schoolName
+    );
+
+
+    setText(
+        "tagline",
+        websiteData.tagline
+    );
+
+
+    setText(
+        "phone",
+        websiteData.phone
+    );
+
+
+    setText(
+        "email",
+        websiteData.email
+    );
+
+
+    setText(
+        "address",
+        websiteData.address
+    );
+
+
+    setHTML(
+        "heroTitle",
+        websiteData.heroTitle
+    );
+
+
+    setText(
+        "heroText",
+        websiteData.heroText
+    );
+
+
+    setText(
+        "aboutText",
+        websiteData.aboutText
+    );
+
+
+    setText(
+        "admissionText",
+        websiteData.admissionText
+    );
+
+}
+
+
+/* =====================================================
+   NOTICES
+===================================================== */
+
+function loadNotices() {
+
+    const container =
+        document.getElementById(
+            "notice"
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    const notices =
+        websiteData.notices || [];
+
+
+    if (notices.length === 0) {
+
+        container.innerHTML =
+            "<p>বর্তমানে কোনো নোটিশ নেই।</p>";
+
+        return;
+
+    }
+
+
+    notices.forEach(
+        function(notice) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.className =
+                "notice";
+
+
+            div.innerHTML = `
+
+                <strong>
+                    📢 ${escapeHTML(
+                        notice.title
+                    )}
+                </strong>
+
+                <small>
+                    ${escapeHTML(
+                        notice.date
+                    )}
+                </small>
+
+            `;
+
+
+            container.appendChild(
+                div
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   EDUCATION
+===================================================== */
+
+function loadEducation() {
+
+    const container =
+        document.querySelector(
+            "#education .cards"
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    const education =
+        websiteData.education || [];
+
+
+    education.forEach(
+        function(item) {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "card";
+
+
+            card.innerHTML = `
+
+                <h3>
+                    📚 ${escapeHTML(
+                        item.title
+                    )}
+                </h3>
+
+                <p>
+                    ${escapeHTML(
+                        item.text
+                    )}
+                </p>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   TEACHERS
+===================================================== */
+
+function loadTeachers() {
+
+    const container =
+        document.querySelector(
+            "#teachers .cards"
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    const teachers =
+        websiteData.teachers || [];
+
+
+    teachers.forEach(
+        function(teacher) {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "card";
+
+
+            card.innerHTML = `
+
+                <h3>
+                    👨‍🏫 ${escapeHTML(
+                        teacher.designation
+                    )}
+                </h3>
+
+                <p>
+                    ${escapeHTML(
+                        teacher.name
+                    )}
+                </p>
+
+                <small>
+                    📞 ${escapeHTML(
+                        teacher.phone
+                    )}
+                </small>
+
+            `;
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+function loadGallery() {
+
+    const container =
+        document.querySelector(
+            "#gallery .gallery"
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    const gallery =
+        websiteData.gallery || [];
+
+
+    if (gallery.length === 0) {
+
+        container.innerHTML =
+            "<p>গ্যালারিতে এখনো কোনো ছবি যোগ করা হয়নি।</p>";
+
+        return;
+
+    }
+
+
+    gallery.forEach(
+        function(item) {
+
+            const image =
+                document.createElement(
+                    "img"
+                );
+
+
+            image.src =
+                item.image;
+
+
+            image.alt =
+                item.title || "মাদ্রাসা";
+
+
+            image.loading =
+                "lazy";
+
+
+            container.appendChild(
+                image
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SOCIAL MEDIA
+===================================================== */
+
+function loadSocialMedia() {
+
+    const social =
+        websiteData.social || {};
+
+
+    const facebook =
+        document.getElementById(
+            "facebook"
+        );
+
+    const youtube =
+        document.getElementById(
+            "youtube"
+        );
+
+    const telegram =
+        document.getElementById(
+            "telegram"
+        );
+
+    const whatsapp =
+        document.getElementById(
+            "whatsapp"
+        );
+
+
+    if (facebook) {
+
+        facebook.href =
+            social.facebook || "#";
+
+    }
+
+
+    if (youtube) {
+
+        youtube.href =
+            social.youtube || "#";
+
+    }
+
+
+    if (telegram) {
+
+        telegram.href =
+            social.telegram || "#";
+
+    }
+
+
+    if (whatsapp) {
+
+        whatsapp.href =
+            social.whatsapp || "#";
+
+    }
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+function loadFooter() {
+
+    const footer =
+        document.querySelector(
+            "footer small"
+        );
+
+    if (!footer) return;
+
+
+    footer.textContent =
+        "© " +
+        new Date().getFullYear() +
+        " " +
+        websiteData.schoolName +
+        " — সর্বস্বত্ব সংরক্ষিত";
+
+}
+
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+
+function loadPageTitle() {
+
+    document.title =
+        websiteData.schoolName;
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(
+        value || ""
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   INITIALIZE WEBSITE
+===================================================== */
+
+function initializeWebsite() {
+
+    loadSchoolInformation();
+
+    loadNotices();
+
+    loadEducation();
+
+    loadTeachers();
+
+    loadGallery();
+
+    loadSocialMedia();
+
+    loadFooter();
+
+    loadPageTitle();
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        initializeWebsite();
+
+    }
+);
