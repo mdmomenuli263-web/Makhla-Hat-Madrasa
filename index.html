@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, "Noto Sans Bengali", sans-serif;
+      background: #f5faf7;
+      color: #173b2a;
+      line-height: 1.7;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    /* Top Bar */
+    .topbar {
+      background: #034c2b;
+      color: white;
+      text-align: center;
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    /* Header */
+    header {
+      background: white;
+      padding: 18px 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+
+    .school-name h1 {
+      color: #07562f;
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    .school-name p {
+      color: #a47a17;
+      font-size: 15px;
+    }
+
+    /* Navigation */
+    nav {
+      background: #064c2c;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 15px rgba(0,0,0,.15);
+    }
+
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 14px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .nav-menu a:hover {
+      background: #b58a22;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3, 76, 43, .95),
+          rgba(3, 76, 43, .55)
+        ),
+        linear-gradient(135deg, #1e7049, #d0ac55);
+    }
+
+    .hero-content {
+      color: white;
+      max-width: 720px;
+      padding: 60px 0;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #c49a2c;
+      padding: 7px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      line-height: 1.3;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 650px;
+    }
+
+    .buttons {
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .btn-gold {
+      background: #c49a2c;
+      color: white;
+    }
+
+    .btn-white {
+      color: white;
+      border: 1px solid white;
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: white;
+      margin-top: -35px;
+      position: relative;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.1);
+      overflow: hidden;
+    }
+
+    .feature {
+      padding: 22px;
+      border-right: 1px solid #eee;
+    }
+
+    .feature:last-child {
+      border-right: none;
+    }
+
+    .feature-icon {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    .feature h3 {
+      color: #07562f;
+      font-size: 18px;
+    }
+
+    .feature p {
+      color: #68756e;
+      font-size: 13px;
+    }
+
+    /* Sections */
+    section {
+      padding: 55px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      color: #07562f;
+      font-size: 30px;
+    }
+
+    .section-title p {
+      color: #6c786f;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 13px;
+      border: 1px solid #e1eae4;
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    }
+
+    .card h3 {
+      color: #07562f;
+      margin-bottom: 8px;
+    }
+
+    /* About / Notice */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .box {
+      background: white;
+      border-radius: 13px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    }
+
+    .box-title {
+      background: #07562f;
+      color: white;
+      padding: 12px 18px;
+      font-weight: bold;
+    }
+
+    .box-content {
+      padding: 20px;
+    }
+
+    .notice {
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .notice:last-child {
+      border-bottom: none;
+    }
+
+    .notice strong {
+      display: block;
+    }
+
+    .notice small {
+      color: #888;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Admission */
+    .admission {
+      background: #07562f;
+      color: white;
+    }
+
+    .admission-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Contact */
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .map {
+      min-height: 230px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: white;
+      border-radius: 13px;
+    }
+
+    /* Footer */
+    footer {
+      background: #033d24;
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .arabic {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    /* Admin Button */
+    .admin-button {
+      position: fixed;
+      right: 15px;
+      bottom: 15px;
+      background: #c49a2c;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 5px 20px rgba(0,0,0,.25);
+      z-index: 200;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+
+      .features,
+      .cards,
+      .two-column,
+      .contact {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .school-name h1 {
+        font-size: 23px;
+      }
+
+      .hero h2 {
+        font-size: 38px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+
+      .features,
+      .cards,
+      .two-column,
+      .contact,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .header-content {
+        text-align: center;
+        flex-direction: column;
+      }
+
+      .school-name h1 {
+        font-size: 19px;
+      }
+
+      .logo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .hero {
+        min-height: 430px;
+      }
+
+      .hero h2 {
+        font-size: 31px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .nav-menu a {
+        font-size: 12px;
+        padding: 9px 8px;
+      }
+
+      .admission-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+
+      <!-- Logo -->
+      <img
+        src="logo.png"
+        alt="মাদ্রাসার লোগো"
+        class="logo"
+      >
+
+      <div class="school-name">
+        <h1 id="schoolName">
+          মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+        </h1>
+
+        <p id="tagline">
+          শিক্ষা • শৃঙ্খলা • আদর্শ • সফলতা
+        </p>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-menu">
+      <a href="#home">হোম</a>
+      <a href="#about">আমাদের সম্পর্কে</a>
+      <a href="#education">শিক্ষাব্যবস্থা</a>
+      <a href="#teachers">শিক্ষকবৃন্দ</a>
+      <a href="#notice">নোটিশ</a>
+      <a href="#gallery">গ্যালারি</a>
+      <a href="#admission">ভর্তি</a>
+      <a href="#contact">যোগাযোগ</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+
+      <span class="badge">
+        আস-সালামু আলাইকুম ওয়া রহমাতুল্লাহ
+      </span>
+
+      <h2 id="heroTitle">
+        জ্ঞান অর্জন করো,<br>
+        আলোকিত করো জীবন
+      </h2>
+
+      <p id="heroText">
+        কুরআন ও সুন্নাহভিত্তিক শিক্ষা, নৈতিকতা ও
+        আদর্শ মানুষ গড়ার লক্ষ্যে আমাদের এই পথ চলা।
+      </p>
+
+      <div class="buttons">
+        <a href="#about" class="btn btn-gold">
+          আমাদের সম্পর্কে
+        </a>
+
+        <a href="#admission" class="btn btn-white">
+          ভর্তি তথ্য
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Features -->
+  <div class="container features">
+
+    <div class="feature">
+      <div class="feature-icon">📖</div>
+      <h3>কুরআন শিক্ষা</h3>
+      <p>তাজবিদসহ সঠিকভাবে কুরআন শিক্ষা</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🕌</div>
+      <h3>দ্বীনি শিক্ষা</h3>
+      <p>হাদিস, ফিকহ, আকাইদ ও আরবি শিক্ষা</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🎓</div>
+      <h3>আধুনিক শিক্ষা</h3>
+      <p>বাংলা, ইংরেজি, গণিত ও কম্পিউটার</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🌿</div>
+      <h3>নৈতিক শিক্ষা</h3>
+      <p>আদর্শ চরিত্র ও নৈতিকতার শিক্ষা</p>
+    </div>
+
+  </div>
+
+  <!-- About + Notice -->
+  <section id="about">
+
+    <div class="container two-column">
+
+      <div class="box">
+
+        <div class="box-title">
+          📢 সর্বশেষ নোটিশ
+        </div>
+
+        <div class="box-content" id="notice">
+
+          <div class="notice">
+            <strong>নতুন শিক্ষাবর্ষের ভর্তি কার্যক্রম</strong>
+            <small>২৭ আগস্ট ২০২৬</small>
+          </div>
+
+          <div class="notice">
+            <strong>মাসিক পরীক্ষা সংক্রান্ত নোটিশ</strong>
+            <small>২০ আগস্ট ২০২৬</small>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="box">
+
+        <div class="box-title">
+          🕌 আমাদের সম্পর্কে
+        </div>
+
+        <div class="box-content">
+
+          <p id="aboutText">
+            মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+            একটি দ্বীনি ও নৈতিক শিক্ষাপ্রতিষ্ঠান।
+            কুরআন ও সুন্নাহর আলোকে শিক্ষার্থীদের
+            জ্ঞান, চরিত্র ও আদর্শ গঠনে আমরা কাজ করি।
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>আমাদের শিক্ষাব্যবস্থা</h2>
+        <p>
+          দ্বীনি ও প্রয়োজনীয় সাধারণ শিক্ষার সমন্বিত পরিবেশ
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>📖 নূরানি ও নাজেরা</h3>
+          <p>
+            সঠিক উচ্চারণ ও তাজবিদসহ কুরআন শিক্ষা।
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>📚 হিফজ বিভাগ</h3>
+          <p>
+            পরিকল্পিত পদ্ধতিতে কুরআন হিফজের ব্যবস্থা।
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>📘 কিতাব বিভাগ</h3>
+          <p>
+            দ্বীনি জ্ঞান, আরবি ও প্রয়োজনীয় সাধারণ শিক্ষা।
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Teachers -->
+  <section id="teachers">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>শিক্ষকবৃন্দ</h2>
+        <p>
+          দক্ষ ও অভিজ্ঞ শিক্ষকদের তত্ত্বাবধানে পাঠদান
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>👨‍🏫 প্রধান শিক্ষক</h3>
+          <p>নাম এখানে লিখুন</p>
+        </div>
+
+        <div class="card">
+          <h3>👨‍🏫 সহকারী শিক্ষক</h3>
+          <p>নাম এখানে লিখুন</p>
+        </div>
+
+        <div class="card">
+          <h3>👨‍🏫 হিফজ শিক্ষক</h3>
+          <p>নাম এখানে লিখুন</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>ফটো গ্যালারি</h2>
+        <p>
+          মাদ্রাসার বিভিন্ন কার্যক্রম ও স্মরণীয় মুহূর্ত
+        </p>
+      </div>
+
+      <div class="gallery">
+
+        <img src="logo.png" alt="মাদ্রাসা">
+
+        <img src="logo.png" alt="মাদ্রাসা">
+
+        <img src="logo.png" alt="মাদ্রাসা">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Admission -->
+  <section class="admission" id="admission">
+
+    <div class="container admission-content">
+
+      <div>
+        <h2>ভর্তি চলছে</h2>
+
+        <p id="admissionText">
+          নতুন শিক্ষাবর্ষে ভর্তি সংক্রান্ত তথ্য জানতে
+          আমাদের সাথে যোগাযোগ করুন।
+        </p>
+      </div>
+
+      <a href="#contact" class="btn btn-gold">
+        যোগাযোগ করুন
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>যোগাযোগ</h2>
+      </div>
+
+      <div class="contact">
+
+        <div class="card">
+
+          <p>
+            📍 <strong>ঠিকানা</strong><br>
+            <span id="address">
+              মাকলাহাট, নিয়ামতপুর, নওগাঁ
+            </span>
+          </p>
+
+          <br>
+
+          <p>
+            📞 <strong>মোবাইল</strong><br>
+            <span id="phone">
+              01712-345678
+            </span>
+          </p>
+
+          <br>
+
+          <p>
+            ✉️ <strong>ই-মেইল</strong><br>
+            <span id="email">
+              example@email.com
+            </span>
+          </p>
+
+        </div>
+
+        <div class="map">
+          📍<br>
+          Google Map<br>
+          Admin Panel থেকে পরিবর্তন করা যাবে
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+
+    <div class="container">
+
+      <div class="arabic">
+        وَقُل رَّبِّ زِدْنِي عِلْمًا
+      </div>
+
+      <p>
+        “হে আমার রব! আমার জ্ঞান বৃদ্ধি করুন।”
+        — সূরা ত্ব-হা: ১১৪
+      </p>
+
+      <br>
+
+      <small>
+        © 2026 মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+      </small>
+
+    </div>
+
+  </footer>
+
+  <!-- Admin Button -->
+  <a href="admin.html" class="admin-button">
+    ⚙️ Admin
+  </a>
+
+</body>
+</html>
