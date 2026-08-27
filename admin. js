@@ -1,0 +1,1048 @@
+/* =====================================================
+   মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+   ADMIN PANEL SCRIPT
+===================================================== */
+
+const ADMIN_STORAGE_KEY = "madrasaWebsiteData";
+
+const ADMIN_PASSWORD = "123456";
+
+
+/* =====================================================
+   DEFAULT DATA
+===================================================== */
+
+const ADMIN_DEFAULT_DATA = {
+
+    schoolName:
+        "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা",
+
+    tagline:
+        "শিক্ষা • শৃঙ্খলা • আদর্শ • সফলতা",
+
+    phone:
+        "01712-345678",
+
+    email:
+        "example@email.com",
+
+    address:
+        "মাকলাহাট, নিয়ামতপুর, নওগাঁ",
+
+    heroTitle:
+        "জ্ঞান অর্জন করো,<br>আলোকিত করো জীবন",
+
+    heroText:
+        "কুরআন ও সুন্নাহভিত্তিক শিক্ষা, নৈতিকতা ও আদর্শ মানুষ গড়ার লক্ষ্যে আমাদের এই পথ চলা।",
+
+    aboutText:
+        "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা একটি দ্বীনি ও নৈতিক শিক্ষাপ্রতিষ্ঠান।",
+
+    admissionText:
+        "নতুন শিক্ষাবর্ষে ভর্তি সংক্রান্ত তথ্য জানতে আমাদের সাথে যোগাযোগ করুন।",
+
+    notices: [],
+
+    education: [],
+
+    teachers: [],
+
+    gallery: [],
+
+    social: {
+        facebook: "#",
+        youtube: "#",
+        telegram: "#",
+        whatsapp: "#"
+    }
+
+};
+
+
+/* =====================================================
+   LOAD DATA
+===================================================== */
+
+function loadAdminData() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                ADMIN_STORAGE_KEY
+            );
+
+        if (!saved) {
+
+            return JSON.parse(
+                JSON.stringify(
+                    ADMIN_DEFAULT_DATA
+                )
+            );
+
+        }
+
+        return {
+
+            ...ADMIN_DEFAULT_DATA,
+
+            ...JSON.parse(saved)
+
+        };
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        return JSON.parse(
+            JSON.stringify(
+                ADMIN_DEFAULT_DATA
+            )
+        );
+
+    }
+
+}
+
+
+let adminData =
+    loadAdminData();
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function adminLogin() {
+
+    const passwordInput =
+        document.getElementById(
+            "adminPassword"
+        );
+
+    if (!passwordInput) return;
+
+
+    const password =
+        passwordInput.value;
+
+
+    if (password === ADMIN_PASSWORD) {
+
+        localStorage.setItem(
+            "adminLoggedIn",
+            "true"
+        );
+
+
+        showAdminPanel();
+
+    }
+
+    else {
+
+        alert(
+            "❌ ভুল পাসওয়ার্ড!"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CHECK LOGIN
+===================================================== */
+
+function checkAdminLogin() {
+
+    const loggedIn =
+        localStorage.getItem(
+            "adminLoggedIn"
+        );
+
+
+    if (loggedIn === "true") {
+
+        showAdminPanel();
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOW PANEL
+===================================================== */
+
+function showAdminPanel() {
+
+    const login =
+        document.getElementById(
+            "loginSection"
+        );
+
+    const panel =
+        document.getElementById(
+            "editorSection"
+        );
+
+
+    if (login) {
+
+        login.style.display =
+            "none";
+
+    }
+
+
+    if (panel) {
+
+        panel.style.display =
+            "block";
+
+    }
+
+
+    loadAdminEditor();
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function adminLogout() {
+
+    localStorage.removeItem(
+        "adminLoggedIn"
+    );
+
+
+    location.reload();
+
+}
+
+
+/* =====================================================
+   LOAD EDITOR
+===================================================== */
+
+function loadAdminEditor() {
+
+    setValue(
+        "schoolName",
+        adminData.schoolName
+    );
+
+    setValue(
+        "tagline",
+        adminData.tagline
+    );
+
+    setValue(
+        "phone",
+        adminData.phone
+    );
+
+    setValue(
+        "email",
+        adminData.email
+    );
+
+    setValue(
+        "address",
+        adminData.address
+    );
+
+    setValue(
+        "heroTitle",
+        adminData.heroTitle
+    );
+
+    setValue(
+        "heroText",
+        adminData.heroText
+    );
+
+    setValue(
+        "aboutText",
+        adminData.aboutText
+    );
+
+    setValue(
+        "admissionText",
+        adminData.admissionText
+    );
+
+
+    renderAdminNotices();
+
+    renderAdminEducation();
+
+    renderAdminTeachers();
+
+    renderAdminGallery();
+
+}
+
+
+/* =====================================================
+   SET VALUE
+===================================================== */
+
+function setValue(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(id);
+
+    if (!element) return;
+
+    element.value =
+        value || "";
+
+}
+
+
+/* =====================================================
+   UPDATE BASIC DATA
+===================================================== */
+
+function updateBasicData() {
+
+    adminData.schoolName =
+        getValue("schoolName");
+
+    adminData.tagline =
+        getValue("tagline");
+
+    adminData.phone =
+        getValue("phone");
+
+    adminData.email =
+        getValue("email");
+
+    adminData.address =
+        getValue("address");
+
+    adminData.heroTitle =
+        getValue("heroTitle");
+
+    adminData.heroText =
+        getValue("heroText");
+
+    adminData.aboutText =
+        getValue("aboutText");
+
+    adminData.admissionText =
+        getValue("admissionText");
+
+}
+
+
+/* =====================================================
+   GET VALUE
+===================================================== */
+
+function getValue(id) {
+
+    const element =
+        document.getElementById(id);
+
+    if (!element) return "";
+
+    return element.value;
+
+}
+
+
+/* =====================================================
+   SAVE DATA
+===================================================== */
+
+function saveAdminData() {
+
+    updateBasicData();
+
+
+    localStorage.setItem(
+
+        ADMIN_STORAGE_KEY,
+
+        JSON.stringify(
+            adminData
+        )
+
+    );
+
+
+    showSaveMessage();
+
+}
+
+
+/* =====================================================
+   SAVE MESSAGE
+===================================================== */
+
+function showSaveMessage() {
+
+    let message =
+        document.getElementById(
+            "saveMessage"
+        );
+
+
+    if (!message) {
+
+        message =
+            document.createElement(
+                "div"
+            );
+
+        message.id =
+            "saveMessage";
+
+        message.style.position =
+            "fixed";
+
+        message.style.bottom =
+            "20px";
+
+        message.style.left =
+            "50%";
+
+        message.style.transform =
+            "translateX(-50%)";
+
+        message.style.background =
+            "#07562f";
+
+        message.style.color =
+            "white";
+
+        message.style.padding =
+            "12px 22px";
+
+        message.style.borderRadius =
+            "8px";
+
+        message.style.zIndex =
+            "9999";
+
+        document.body.appendChild(
+            message
+        );
+
+    }
+
+
+    message.textContent =
+        "✅ পরিবর্তন সংরক্ষণ হয়েছে!";
+
+
+    message.style.display =
+        "block";
+
+
+    setTimeout(
+        function() {
+
+            message.style.display =
+                "none";
+
+        },
+        2500
+    );
+
+}
+
+
+/* =====================================================
+   NOTICES
+===================================================== */
+
+function renderAdminNotices() {
+
+    const container =
+        document.getElementById(
+            "noticeList"
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    adminData.notices.forEach(
+        function(item, index) {
+
+            container.innerHTML += `
+
+                <div class="item">
+
+                    <div class="field">
+
+                        <label>
+                            নোটিশ
+                        </label>
+
+                        <input
+                            type="text"
+                            value="${escapeHTML(item.title)}"
+                            onchange="
+                                adminData.notices[${index}].title =
+                                this.value
+                            "
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            তারিখ
+                        </label>
+
+                        <input
+                            type="text"
+                            value="${escapeHTML(item.date)}"
+                            onchange="
+                                adminData.notices[${index}].date =
+                                this.value
+                            "
+                        >
+
+                    </div>
+
+                    <button
+                        class="btn btn-delete"
+                        onclick="
+                            deleteAdminNotice(${index})
+                        "
+                    >
+                        🗑️ মুছে ফেলুন
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ADD NOTICE
+===================================================== */
+
+function addAdminNotice() {
+
+    adminData.notices.push({
+
+        title:
+            "নতুন নোটিশ",
+
+        date:
+            "তারিখ লিখুন"
+
+    });
+
+
+    renderAdminNotices();
+
+}
+
+
+/* =====================================================
+   DELETE NOTICE
+===================================================== */
+
+function deleteAdminNotice(index) {
+
+    adminData.notices.splice(
+        index,
+        1
+    );
+
+
+    renderAdminNotices();
+
+}
+
+
+/* =====================================================
+   EDUCATION
+===================================================== */
+
+function renderAdminEducation() {
+
+    const container =
+        document.getElementById(
+            "educationList"
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    adminData.education.forEach(
+        function(item, index) {
+
+            container.innerHTML += `
+
+                <div class="item">
+
+                    <div class="field">
+
+                        <label>
+                            বিভাগের নাম
+                        </label>
+
+                        <input
+                            type="text"
+                            value="${escapeHTML(item.title)}"
+                            onchange="
+                                adminData.education[${index}].title =
+                                this.value
+                            "
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            বিবরণ
+                        </label>
+
+                        <textarea
+                            onchange="
+                                adminData.education[${index}].text =
+                                this.value
+                            "
+                        >${escapeHTML(item.text)}</textarea>
+
+                    </div>
+
+                    <button
+                        class="btn btn-delete"
+                        onclick="
+                            deleteAdminEducation(${index})
+                        "
+                    >
+                        🗑️ মুছে ফেলুন
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ADD EDUCATION
+===================================================== */
+
+function addAdminEducation() {
+
+    adminData.education.push({
+
+        title:
+            "নতুন বিভাগ",
+
+        text:
+            "বিভাগের বিবরণ লিখুন"
+
+    });
+
+
+    renderAdminEducation();
+
+}
+
+
+/* =====================================================
+   DELETE EDUCATION
+===================================================== */
+
+function deleteAdminEducation(index) {
+
+    adminData.education.splice(
+        index,
+        1
+    );
+
+
+    renderAdminEducation();
+
+}
+
+
+/* =====================================================
+   TEACHERS
+===================================================== */
+
+function renderAdminTeachers() {
+
+    const container =
+        document.getElementById(
+            "teacherList"
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    adminData.teachers.forEach(
+        function(item, index) {
+
+            container.innerHTML += `
+
+                <div class="item">
+
+                    <div class="field">
+
+                        <label>
+                            শিক্ষকের নাম
+                        </label>
+
+                        <input
+                            type="text"
+                            value="${escapeHTML(item.name)}"
+                            onchange="
+                                adminData.teachers[${index}].name =
+                                this.value
+                            "
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            পদবি
+                        </label>
+
+                        <input
+                            type="text"
+                            value="${escapeHTML(item.designation)}"
+                            onchange="
+                                adminData.teachers[${index}].designation =
+                                this.value
+                            "
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            মোবাইল
+                        </label>
+
+                        <input
+                            type="text"
+                            value="${escapeHTML(item.phone)}"
+                            onchange="
+                                adminData.teachers[${index}].phone =
+                                this.value
+                            "
+                        >
+
+                    </div>
+
+                    <button
+                        class="btn btn-delete"
+                        onclick="
+                            deleteAdminTeacher(${index})
+                        "
+                    >
+                        🗑️ মুছে ফেলুন
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ADD TEACHER
+===================================================== */
+
+function addAdminTeacher() {
+
+    adminData.teachers.push({
+
+        name:
+            "শিক্ষকের নাম",
+
+        designation:
+            "পদবি",
+
+        phone:
+            "মোবাইল নম্বর"
+
+    });
+
+
+    renderAdminTeachers();
+
+}
+
+
+/* =====================================================
+   DELETE TEACHER
+===================================================== */
+
+function deleteAdminTeacher(index) {
+
+    adminData.teachers.splice(
+        index,
+        1
+    );
+
+
+    renderAdminTeachers();
+
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+function renderAdminGallery() {
+
+    const container =
+        document.getElementById(
+            "galleryList"
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    adminData.gallery.forEach(
+        function(item, index) {
+
+            container.innerHTML += `
+
+                <div class="item">
+
+                    <div class="field">
+
+                        <label>
+                            ছবির URL
+                        </label>
+
+                        <input
+                            type="text"
+                            value="${escapeHTML(item.image)}"
+                            onchange="
+                                adminData.gallery[${index}].image =
+                                this.value
+                            "
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+                            ছবির নাম
+                        </label>
+
+                        <input
+                            type="text"
+                            value="${escapeHTML(item.title)}"
+                            onchange="
+                                adminData.gallery[${index}].title =
+                                this.value
+                            "
+                        >
+
+                    </div>
+
+                    <button
+                        class="btn btn-delete"
+                        onclick="
+                            deleteAdminGallery(${index})
+                        "
+                    >
+                        🗑️ মুছে ফেলুন
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ADD GALLERY
+===================================================== */
+
+function addAdminGallery() {
+
+    adminData.gallery.push({
+
+        image:
+            "logo.png",
+
+        title:
+            "নতুন ছবি"
+
+    });
+
+
+    renderAdminGallery();
+
+}
+
+
+/* =====================================================
+   DELETE GALLERY
+===================================================== */
+
+function deleteAdminGallery(index) {
+
+    adminData.gallery.splice(
+        index,
+        1
+    );
+
+
+    renderAdminGallery();
+
+}
+
+
+/* =====================================================
+   RESET WEBSITE DATA
+===================================================== */
+
+function resetAdminData() {
+
+    const confirmation =
+        confirm(
+            "আপনি কি সত্যিই সব তথ্য ডিফল্টে ফিরিয়ে দিতে চান?"
+        );
+
+
+    if (!confirmation) return;
+
+
+    localStorage.removeItem(
+        ADMIN_STORAGE_KEY
+    );
+
+
+    adminData =
+        JSON.parse(
+            JSON.stringify(
+                ADMIN_DEFAULT_DATA
+            )
+        );
+
+
+    loadAdminEditor();
+
+
+    showSaveMessage();
+
+}
+
+
+/* =====================================================
+   OPEN WEBSITE
+===================================================== */
+
+function openMainWebsite() {
+
+    window.open(
+        "index.html",
+        "_blank"
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(
+        value || ""
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   START ADMIN
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        checkAdminLogin();
+
+    }
+);
