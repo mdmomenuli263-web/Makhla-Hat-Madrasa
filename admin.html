@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Panel - মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, "Noto Sans Bengali", sans-serif;
+      background: #f3f8f5;
+      color: #173b2a;
+      line-height: 1.6;
+    }
+
+    .topbar {
+      background: #064c2c;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .container {
+      width: 94%;
+      max-width: 900px;
+      margin: 25px auto;
+    }
+
+    .panel {
+      background: white;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.08);
+    }
+
+    .panel h2 {
+      color: #07562f;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccd9d1;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: #07562f;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .item {
+      border: 1px solid #dce6df;
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      background: #fbfdfb;
+    }
+
+    .btn {
+      border: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      margin: 4px;
+    }
+
+    .btn-save {
+      background: #07562f;
+      color: white;
+    }
+
+    .btn-add {
+      background: #b68a21;
+      color: white;
+    }
+
+    .btn-delete {
+      background: #a83b3b;
+      color: white;
+    }
+
+    .btn-view {
+      background: #333;
+      color: white;
+    }
+
+    .message {
+      display: none;
+      background: #e5f6ea;
+      color: #176331;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .help {
+      background: #fff8e5;
+      border-left: 4px solid #c49a2c;
+      padding: 12px;
+      margin-bottom: 18px;
+      border-radius: 5px;
+    }
+
+    .login-box {
+      max-width: 420px;
+      margin: 70px auto;
+    }
+
+    .login-box h2 {
+      text-align: center;
+    }
+
+    .logout {
+      float: right;
+      color: white;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    @media (max-width: 650px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div class="topbar">
+    ⚙️ <strong>মাদ্রাসা Admin Panel</strong>
+
+    <span
+      class="logout"
+      id="logoutButton"
+      style="display:none;"
+      onclick="logout()"
+    >
+      Logout
+    </span>
+  </div>
+
+
+  <!-- Main -->
+  <div class="container">
+
+
+    <!-- LOGIN -->
+    <div id="loginSection" class="panel login-box">
+
+      <h2>🔐 Admin Login</h2>
+
+      <div class="help">
+        ডিফল্ট পাসওয়ার্ড:
+        <strong>123456</strong>
+      </div>
+
+      <div class="field">
+
+        <label>
+          পাসওয়ার্ড
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          placeholder="পাসওয়ার্ড লিখুন"
+        >
+
+      </div>
+
+      <button
+        class="btn btn-save"
+        onclick="login()"
+      >
+        Login
+      </button>
+
+    </div>
+
+
+    <!-- EDITOR -->
+    <div
+      id="editorSection"
+      style="display:none;"
+    >
+
+
+      <!-- MESSAGE -->
+      <div
+        id="message"
+        class="message"
+      >
+        ✅ পরিবর্তন সফলভাবে সংরক্ষণ হয়েছে!
+      </div>
+
+
+      <!-- GENERAL INFORMATION -->
+      <div class="panel">
+
+        <h2>
+          🏫 মাদ্রাসার সাধারণ তথ্য
+        </h2>
+
+
+        <div class="row">
+
+          <div class="field">
+
+            <label>
+              মাদ্রাসার নাম
+            </label>
+
+            <input
+              type="text"
+              id="schoolName"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Tagline
+            </label>
+
+            <input
+              type="text"
+              id="tagline"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="field">
+
+            <label>
+              মোবাইল নম্বর
+            </label>
+
+            <input
+              type="text"
+              id="phone"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              ই-মেইল
+            </label>
+
+            <input
+              type="email"
+              id="email"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            সম্পূর্ণ ঠিকানা
+          </label>
+
+          <input
+            type="text"
+            id="address"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Hero শিরোনাম
+          </label>
+
+          <textarea
+            id="heroTitle"
+          ></textarea>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Hero-এর বিবরণ
+          </label>
+
+          <textarea
+            id="heroText"
+          ></textarea>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            আমাদের সম্পর্কে
+          </label>
+
+          <textarea
+            id="aboutText"
+          ></textarea>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            ভর্তি সংক্রান্ত তথ্য
+          </label>
+
+          <textarea
+            id="admissionText"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- NOTICE -->
+      <div class="panel">
+
+        <h2>
+          📢 নোটিশ ম্যানেজমেন্ট
+        </h2>
+
+        <div id="noticeList"></div>
+
+        <button
+          class="btn btn-add"
+          onclick="addNotice()"
+        >
+          + নতুন নোটিশ যোগ করুন
+        </button>
+
+      </div>
+
+
+
+      <!-- EDUCATION -->
+      <div class="panel">
+
+        <h2>
+          📚 শিক্ষাব্যবস্থা
+        </h2>
+
+        <div id="educationList"></div>
+
+        <button
+          class="btn btn-add"
+          onclick="addEducation()"
+        >
+          + নতুন বিভাগ যোগ করুন
+        </button>
+
+      </div>
+
+
+
+      <!-- TEACHERS -->
+      <div class="panel">
+
+        <h2>
+          👨‍🏫 শিক্ষকবৃন্দ
+        </h2>
+
+        <div id="teacherList"></div>
+
+        <button
+          class="btn btn-add"
+          onclick="addTeacher()"
+        >
+          + শিক্ষক যোগ করুন
+        </button>
+
+      </div>
+
+
+
+      <!-- GALLERY -->
+      <div class="panel">
+
+        <h2>
+          🖼️ ফটো গ্যালারি
+        </h2>
+
+        <div class="help">
+          এখানে ছবির URL দিতে পারবেন।
+          <br>
+          উদাহরণ:
+          <br>
+          https://example.com/photo.jpg
+        </div>
+
+        <div id="galleryList"></div>
+
+        <button
+          class="btn btn-add"
+          onclick="addGallery()"
+        >
+          + ছবি যোগ করুন
+        </button>
+
+      </div>
+
+
+
+      <!-- SAVE -->
+      <div class="panel">
+
+        <button
+          class="btn btn-save"
+          onclick="saveData()"
+        >
+          💾 সব পরিবর্তন সংরক্ষণ করুন
+        </button>
+
+
+        <button
+          class="btn btn-view"
+          onclick="openWebsite()"
+        >
+          🌐 ওয়েবসাইট দেখুন
+        </button>
+
+
+        <button
+          class="btn btn-delete"
+          onclick="resetData()"
+        >
+          ↩ ডিফল্টে ফিরুন
+        </button>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+<script>
+
+
+/* ================================
+   DATABASE
+================================ */
+
+const STORAGE_KEY =
+  "madrasaWebsiteData";
+
+
+const DEFAULT_DATA = {
+
+  schoolName:
+    "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা",
+
+  tagline:
+    "শিক্ষা • শৃঙ্খলা • আদর্শ • সফলতা",
+
+  phone:
+    "01712-345678",
+
+  email:
+    "example@email.com",
+
+  address:
+    "মাকলাহাট, নিয়ামতপুর, নওগাঁ",
+
+  heroTitle:
+    "জ্ঞান অর্জন করো,<br>আলোকিত করো জীবন",
+
+  heroText:
+    "কুরআন ও সুন্নাহভিত্তিক শিক্ষা, নৈতিকতা ও আদর্শ মানুষ গড়ার লক্ষ্যে আমাদের এই পথ চলা।",
+
+  aboutText:
+    "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা একটি দ্বীনি ও নৈতিক শিক্ষাপ্রতিষ্ঠান। কুরআন ও সুন্নাহর আলোকে শিক্ষার্থীদের জ্ঞান, চরিত্র ও আদর্শ গঠনে আমরা কাজ করি।",
+
+  admissionText:
+    "নতুন শিক্ষাবর্ষে ভর্তি সংক্রান্ত তথ্য জানতে আমাদের সাথে যোগাযোগ করুন।",
+
+
+  notices: [
+
+    {
+      title:
+        "নতুন শিক্ষাবর্ষের ভর্তি কার্যক্রম",
+
+      date:
+        "২৭ আগস্ট ২০২৬"
+    },
+
+    {
+      title:
+        "মাসিক পরীক্ষা সংক্রান্ত নোটিশ",
+
+      date:
+        "২০ আগস্ট ২০২৬"
+    }
+
+  ],
+
+
+  education: [
+
+    {
+      title:
+        "নূরানি ও নাজেরা",
+
+      text:
+        "সঠিক উচ্চারণ ও তাজবিদসহ কুরআন শিক্ষা"
+    },
+
+    {
+      title:
+        "হিফজ বিভাগ",
+
+      text:
+        "পরিকল্পিত পদ্ধতিতে কুরআন হিফজ"
+    },
+
+    {
+      title:
+        "কিতাব বিভাগ",
+
+      text:
+        "দ্বীনি জ্ঞান, আরবি ও প্রয়োজনীয় সাধারণ শিক্ষা"
+    }
+
+  ],
+
+
+  teachers: [
+
+    {
+      title:
+        "প্রধান শিক্ষক",
+
+      text:
+        "নাম এখানে লিখুন"
+    },
+
+    {
+      title:
+        "সহকারী শিক্ষক",
+
+      text:
+        "নাম এখানে লিখুন"
+    },
+
+    {
+      title:
+        "হিফজ শিক্ষক",
+
+      text:
+        "নাম এখানে লিখুন"
+    }
+
+  ],
+
+
+  gallery: []
+
+};
+
+
+
+/* ================================
+   LOAD DATA
+================================ */
+
+let data =
+  JSON.parse(
+    localStorage.getItem(STORAGE_KEY)
+  ) || DEFAULT_DATA;
+
+
+
+/* ================================
+   LOGIN
+================================ */
+
+function login() {
+
+  const password =
+    document.getElementById("password").value;
+
+
+  if (password === "123456") {
+
+    document.getElementById(
+      "loginSection"
+    ).style.display = "none";
+
+
+    document.getElementById(
+      "editorSection"
+    ).style.display = "block";
+
+
+    document.getElementById(
+      "logoutButton"
+    ).style.display = "block";
+
+
+    loadEditor();
+
+  }
+
+  else {
+
+    alert(
+      "❌ ভুল পাসওয়ার্ড!"
+    );
+
+  }
+
+}
+
+
+
+/* ================================
+   LOGOUT
+================================ */
+
+function logout() {
+
+  document.getElementById(
+    "editorSection"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "loginSection"
+  ).style.display = "block";
+
+
+  document.getElementById(
+    "logoutButton"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "password"
+  ).value = "";
+
+}
+
+
+
+/* ================================
+   LOAD EDITOR
+================================ */
+
+function loadEditor() {
+
+
+  document.getElementById(
+    "schoolName"
+  ).value = data.schoolName;
+
+
+  document.getElementById(
+    "tagline"
+  ).value = data.tagline;
+
+
+  document.getElementById(
+    "phone"
+  ).value = data.phone;
+
+
+  document.getElementById(
+    "email"
+  ).value = data.email;
+
+
+  document.getElementById(
+    "address"
+  ).value = data.address;
+
+
+  document.getElementById(
+    "heroTitle"
+  ).value = data.heroTitle;
+
+
+  document.getElementById(
+    "heroText"
+  ).value = data.heroText;
+
+
+  document.getElementById(
+    "aboutText"
+  ).value = data.aboutText;
+
+
+  document.getElementById(
+    "admissionText"
+  ).value = data.admissionText;
+
+
+
+  renderNotices();
+
+  renderEducation();
+
+  renderTeachers();
+
+  renderGallery();
+
+}
+
+
+
+/* ================================
+   NOTICES
+================================ */
+
+function renderNotices() {
+
+  const box =
+    document.getElementById(
+      "noticeList"
+    );
+
+
+  box.innerHTML = "";
+
+
+  data.notices.forEach(
+    (item, index) => {
+
+      box.innerHTML += `
+
+        <div class="item">
+
+          <div class="field">
+
+            <label>
+              নোটিশ
+            </label>
+
+            <input
+              type="text"
+              value="${escapeHTML(item.title)}"
+              onchange="updateNotice(${index}, 'title', this.value)"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              তারিখ
+            </label>
+
+            <input
+              type="text"
+              value="${escapeHTML(item.date)}"
+              onchange="updateNotice(${index}, 'date', this.value)"
+            >
+
+          </div>
+
+
+          <button
+            class="btn btn-delete"
+            onclick="deleteNotice(${index})"
+          >
+            🗑️ মুছে ফেলুন
+          </button>
+
+        </div>
+
+      `;
+
+    }
+  );
+
+}
+
+
+
+function updateNotice(
+  index,
+  key,
+  value
+) {
+
+  data.notices[index][key] =
+    value;
+
+}
+
+
+
+function addNotice() {
+
+  data.notices.push({
+
+    title:
+      "নতুন নোটিশ",
+
+    date:
+      "তারিখ লিখুন"
+
+  });
+
+
+  renderNotices();
+
+}
+
+
+
+function deleteNotice(index) {
+
+  data.notices.splice(
+    index,
+    1
+  );
+
+
+  renderNotices();
+
+}
+
+
+
+/* ================================
+   EDUCATION
+================================ */
+
+function renderEducation() {
+
+  const box =
+    document.getElementById(
+      "educationList"
+    );
+
+
+  box.innerHTML = "";
+
+
+  data.education.forEach(
+    (item, index) => {
+
+      box.innerHTML += `
+
+        <div class="item">
+
+          <div class="field">
+
+            <label>
+              বিভাগের নাম
+            </label>
+
+            <input
+              type="text"
+              value="${escapeHTML(item.title)}"
+              onchange="updateEducation(${index}, 'title', this.value)"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              বিবরণ
+            </label>
+
+            <textarea
+              onchange="updateEducation(${index}, 'text', this.value)"
+            >${escapeHTML(item.text)}</textarea>
+
+          </div>
+
+
+          <button
+            class="btn btn-delete"
+            onclick="deleteEducation(${index})"
+          >
+            🗑️ মুছে ফেলুন
+          </button>
+
+        </div>
+
+      `;
+
+    }
+  );
+
+}
+
+
+
+function updateEducation(
+  index,
+  key,
+  value
+) {
+
+  data.education[index][key] =
+    value;
+
+}
+
+
+
+function addEducation() {
+
+  data.education.push({
+
+    title:
+      "নতুন বিভাগ",
+
+    text:
+      "বিভাগের বিবরণ লিখুন"
+
+  });
+
+
+  renderEducation();
+
+}
+
+
+
+function deleteEducation(index) {
+
+  data.education.splice(
+    index,
+    1
+  );
+
+
+  renderEducation();
+
+}
+
+
+
+/* ================================
+   TEACHERS
+================================ */
+
+function renderTeachers() {
+
+  const box =
+    document.getElementById(
+      "teacherList"
+    );
+
+
+  box.innerHTML = "";
+
+
+  data.teachers.forEach(
+    (item, index) => {
+
+      box.innerHTML += `
+
+        <div class="item">
+
+          <div class="field">
+
+            <label>
+              পদবি
+            </label>
+
+            <input
+              type="text"
+              value="${escapeHTML(item.title)}"
+              onchange="updateTeacher(${index}, 'title', this.value)"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              শিক্ষকের নাম
+            </label>
+
+            <input
+              type="text"
+              value="${escapeHTML(item.text)}"
+              onchange="updateTeacher(${index}, 'text', this.value)"
+            >
+
+          </div>
+
+
+          <button
+            class="btn btn-delete"
+            onclick="deleteTeacher(${index})"
+          >
+            🗑️ মুছে ফেলুন
+          </button>
+
+        </div>
+
+      `;
+
+    }
+  );
+
+}
+
+
+
+function updateTeacher(
+  index,
+  key,
+  value
+) {
+
+  data.teachers[index][key] =
+    value;
+
+}
+
+
+
+function addTeacher() {
+
+  data.teachers.push({
+
+    title:
+      "নতুন শিক্ষক",
+
+    text:
+      "শিক্ষকের নাম লিখুন"
+
+  });
+
+
+  renderTeachers();
+
+}
+
+
+
+function deleteTeacher(index) {
+
+  data.teachers.splice(
+    index,
+    1
+  );
+
+
+  renderTeachers();
+
+}
+
+
+
+/* ================================
+   GALLERY
+================================ */
+
+function renderGallery() {
+
+  const box =
+    document.getElementById(
+      "galleryList"
+    );
+
+
+  box.innerHTML = "";
+
+
+  data.gallery.forEach(
+    (image, index) => {
+
+      box.innerHTML += `
+
+        <div class="item">
+
+          <div class="field">
+
+            <label>
+              ছবির URL
+            </label>
+
+            <input
+              type="text"
+              value="${escapeHTML(image)}"
+              onchange="updateGallery(${index}, this.value)"
+              placeholder="https://example.com/image.jpg"
+            >
+
+          </div>
+
+
+          <button
+            class="btn btn-delete"
+            onclick="deleteGallery(${index})"
+          >
+            🗑️ মুছে ফেলুন
+          </button>
+
+        </div>
+
+      `;
+
+    }
+  );
+
+}
+
+
+
+function updateGallery(
+  index,
+  value
+) {
+
+  data.gallery[index] =
+    value;
+
+}
+
+
+
+function addGallery() {
+
+  data.gallery.push("");
+
+  renderGallery();
+
+}
+
+
+
+function deleteGallery(index) {
+
+  data.gallery.splice(
+    index,
+    1
+  );
+
+
+  renderGallery();
+
+}
+
+
+
+/* ================================
+   SAVE
+================================ */
+
+function saveData() {
+
+
+  data.schoolName =
+    document.getElementById(
+      "schoolName"
+    ).value;
+
+
+  data.tagline =
+    document.getElementById(
+      "tagline"
+    ).value;
+
+
+  data.phone =
+    document.getElementById(
+      "phone"
+    ).value;
+
+
+  data.email =
+    document.getElementById(
+      "email"
+    ).value;
+
+
+  data.address =
+    document.getElementById(
+      "address"
+    ).value;
+
+
+  data.heroTitle =
+    document.getElementById(
+      "heroTitle"
+    ).value;
+
+
+  data.heroText =
+    document.getElementById(
+      "heroText"
+    ).value;
+
+
+  data.aboutText =
+    document.getElementById(
+      "aboutText"
+    ).value;
+
+
+  data.admissionText =
+    document.getElementById(
+      "admissionText"
+    ).value;
+
+
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
+  );
+
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  message.style.display =
+    "block";
+
+
+  setTimeout(
+    function() {
+
+      message.style.display =
+        "none";
+
+    },
+    2500
+  );
+
+}
+
+
+
+/* ================================
+   RESET
+================================ */
+
+function resetData() {
+
+  const confirmReset =
+    confirm(
+      "সব পরিবর্তন মুছে ডিফল্ট তথ্য ফিরিয়ে দিতে চান?"
+    );
+
+
+  if (confirmReset) {
+
+    localStorage.removeItem(
+      STORAGE_KEY
+    );
+
+
+    data =
+      JSON.parse(
+        JSON.stringify(DEFAULT_DATA)
+      );
+
+
+    loadEditor();
+
+  }
+
+}
+
+
+
+/* ================================
+   OPEN WEBSITE
+================================ */
+
+function openWebsite() {
+
+  window.open(
+    "index.html",
+    "_blank"
+  );
+
+}
+
+
+
+/* ================================
+   SECURITY / HTML ESCAPE
+================================ */
+
+function escapeHTML(value) {
+
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+</script>
+
+</body>
+</html>
