@@ -1,0 +1,856 @@
+/* =====================================================
+   মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+   MAIN WEBSITE STYLE
+===================================================== */
+
+
+/* ==============================
+   GOOGLE FONT
+============================== */
+
+@import url(
+  'https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap'
+);
+
+
+/* ==============================
+   RESET
+============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  font-family:
+    'Noto Sans Bengali',
+    Arial,
+    sans-serif;
+
+  background: #f5faf7;
+
+  color: #173b2a;
+
+  line-height: 1.7;
+}
+
+
+/* ==============================
+   CONTAINER
+============================== */
+
+.container {
+  width: 92%;
+
+  max-width: 1150px;
+
+  margin: auto;
+}
+
+
+/* ==============================
+   TOP BAR
+============================== */
+
+.topbar {
+  background: #034c2b;
+
+  color: white;
+
+  text-align: center;
+
+  padding: 8px;
+
+  font-size: 14px;
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+header {
+  background: white;
+
+  padding: 18px 0;
+}
+
+
+.header-content {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+.logo {
+  width: 100px;
+
+  height: 100px;
+
+  border-radius: 50%;
+
+  object-fit: contain;
+}
+
+
+.school-name h1 {
+  color: #07562f;
+
+  font-size: 30px;
+
+  line-height: 1.4;
+
+  margin-bottom: 5px;
+}
+
+
+.school-name p {
+  color: #a47a17;
+
+  font-size: 15px;
+}
+
+
+/* ==============================
+   NAVIGATION
+============================== */
+
+nav {
+  background: #064c2c;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  box-shadow:
+    0 3px 15px rgba(0,0,0,.15);
+}
+
+
+.nav-menu {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+}
+
+
+.nav-menu a {
+  color: white;
+
+  text-decoration: none;
+
+  padding: 12px 14px;
+
+  font-weight: 700;
+
+  font-size: 14px;
+
+  transition: .3s;
+}
+
+
+.nav-menu a:hover {
+  background: #b58a22;
+}
+
+
+/* ==============================
+   HERO
+============================== */
+
+.hero {
+  min-height: 470px;
+
+  display: flex;
+
+  align-items: center;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      rgba(3,76,43,.95),
+      rgba(3,76,43,.55)
+    ),
+
+    linear-gradient(
+      135deg,
+      #1e7049,
+      #d0ac55
+    );
+}
+
+
+.hero-content {
+  color: white;
+
+  max-width: 720px;
+
+  padding: 60px 0;
+}
+
+
+.badge {
+  display: inline-block;
+
+  background: #c49a2c;
+
+  padding: 7px 16px;
+
+  border-radius: 30px;
+
+  font-size: 13px;
+
+  margin-bottom: 18px;
+}
+
+
+.hero h2 {
+  font-size: 48px;
+
+  line-height: 1.3;
+
+  margin-bottom: 15px;
+}
+
+
+.hero p {
+  font-size: 18px;
+
+  max-width: 650px;
+}
+
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.buttons {
+  margin-top: 25px;
+}
+
+
+.btn {
+  display: inline-block;
+
+  padding: 11px 20px;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  margin-right: 8px;
+
+  transition: .3s;
+}
+
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+
+.btn-gold {
+  background: #c49a2c;
+
+  color: white;
+}
+
+
+.btn-white {
+  color: white;
+
+  border: 1px solid white;
+}
+
+
+/* ==============================
+   FEATURES
+============================== */
+
+.features {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  background: white;
+
+  margin-top: -35px;
+
+  position: relative;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.1);
+}
+
+
+.feature {
+  padding: 22px;
+
+  border-right:
+    1px solid #eee;
+}
+
+
+.feature:last-child {
+  border-right: none;
+}
+
+
+.feature-icon {
+  font-size: 30px;
+
+  margin-bottom: 5px;
+}
+
+
+.feature h3 {
+  color: #07562f;
+
+  font-size: 18px;
+}
+
+
+.feature p {
+  color: #68756e;
+
+  font-size: 13px;
+}
+
+
+/* ==============================
+   SECTIONS
+============================== */
+
+section {
+  padding: 55px 0;
+}
+
+
+.section-title {
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+
+.section-title h2 {
+  color: #07562f;
+
+  font-size: 30px;
+}
+
+
+.section-title p {
+  color: #6c786f;
+}
+
+
+/* ==============================
+   CARDS
+============================== */
+
+.cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+
+.card {
+  background: white;
+
+  padding: 22px;
+
+  border-radius: 13px;
+
+  border:
+    1px solid #e1eae4;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.06);
+
+  transition: .3s;
+}
+
+
+.card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.1);
+}
+
+
+.card h3 {
+  color: #07562f;
+
+  margin-bottom: 8px;
+}
+
+
+/* ==============================
+   TWO COLUMN
+============================== */
+
+.two-column {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 22px;
+}
+
+
+/* ==============================
+   BOX
+============================== */
+
+.box {
+  background: white;
+
+  border-radius: 13px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.06);
+}
+
+
+.box-title {
+  background: #07562f;
+
+  color: white;
+
+  padding: 12px 18px;
+
+  font-weight: 700;
+}
+
+
+.box-content {
+  padding: 20px;
+}
+
+
+/* ==============================
+   NOTICE
+============================== */
+
+.notice {
+  padding: 12px 0;
+
+  border-bottom:
+    1px solid #eee;
+}
+
+
+.notice:last-child {
+  border-bottom: none;
+}
+
+
+.notice strong {
+  display: block;
+}
+
+
+.notice small {
+  color: #888;
+}
+
+
+/* ==============================
+   GALLERY
+============================== */
+
+.gallery {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+}
+
+
+.gallery img {
+  width: 100%;
+
+  height: 210px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  background: #e8eee9;
+
+  transition: .3s;
+}
+
+
+.gallery img:hover {
+  transform: scale(1.02);
+}
+
+
+/* ==============================
+   ADMISSION
+============================== */
+
+.admission {
+  background: #07562f;
+
+  color: white;
+}
+
+
+.admission-content {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+.admission h2 {
+  margin-bottom: 5px;
+}
+
+
+/* ==============================
+   CONTACT
+============================== */
+
+.contact {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 20px;
+}
+
+
+.map {
+  min-height: 230px;
+
+  display: grid;
+
+  place-items: center;
+
+  text-align: center;
+
+  background: white;
+
+  border-radius: 13px;
+
+  border:
+    1px solid #e1eae4;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+  background: #033d24;
+
+  color: white;
+
+  text-align: center;
+
+  padding: 30px 0;
+}
+
+
+.arabic {
+  font-size: 27px;
+
+  margin-bottom: 8px;
+}
+
+
+/* ==============================
+   SOCIAL BUTTONS
+============================== */
+
+.social {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 15px;
+}
+
+
+.social a {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 40px;
+
+  height: 40px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  color: #07562f;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+  transition: .3s;
+}
+
+
+.social a:hover {
+  transform: translateY(-3px);
+}
+
+
+/* ==============================
+   ADMIN BUTTON
+============================== */
+
+.admin-button {
+  position: fixed;
+
+  right: 15px;
+
+  bottom: 15px;
+
+  background: #c49a2c;
+
+  color: white;
+
+  padding: 10px 16px;
+
+  border-radius: 50px;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.25);
+
+  z-index: 200;
+}
+
+
+.admin-button:hover {
+  background: #a67b18;
+}
+
+
+/* ==============================
+   ANIMATION
+============================== */
+
+.fade-in {
+  animation:
+    fadeIn .8s ease;
+}
+
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+/* ==============================
+   TABLET
+============================== */
+
+@media (max-width: 800px) {
+
+  .features,
+  .cards,
+  .two-column,
+  .contact {
+
+    grid-template-columns:
+      1fr 1fr;
+
+  }
+
+
+  .gallery {
+
+    grid-template-columns:
+      1fr 1fr;
+
+  }
+
+
+  .school-name h1 {
+
+    font-size: 23px;
+
+  }
+
+
+  .hero h2 {
+
+    font-size: 38px;
+
+  }
+
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 520px) {
+
+  .features,
+  .cards,
+  .two-column,
+  .contact,
+  .gallery {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .header-content {
+
+    text-align: center;
+
+    flex-direction: column;
+
+  }
+
+
+  .logo {
+
+    width: 80px;
+
+    height: 80px;
+
+  }
+
+
+  .school-name h1 {
+
+    font-size: 19px;
+
+  }
+
+
+  .school-name p {
+
+    font-size: 13px;
+
+  }
+
+
+  .hero {
+
+    min-height: 430px;
+
+  }
+
+
+  .hero h2 {
+
+    font-size: 31px;
+
+  }
+
+
+  .hero p {
+
+    font-size: 15px;
+
+  }
+
+
+  .nav-menu a {
+
+    font-size: 12px;
+
+    padding: 9px 8px;
+
+  }
+
+
+  .admission-content {
+
+    flex-direction: column;
+
+    text-align: center;
+
+  }
+
+
+  .admin-button {
+
+    right: 10px;
+
+    bottom: 10px;
+
+    font-size: 13px;
+
+    padding: 9px 13px;
+
+  }
+
+}
