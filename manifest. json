@@ -1,0 +1,25 @@
+{
+  "name": "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা",
+  "short_name": "মাকলাহাট মাদ্রাসা",
+  "description": "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসার অফিসিয়াল ওয়েবসাইট",
+  "lang": "bn",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5faf7",
+  "theme_color": "#07562f",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
