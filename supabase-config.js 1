@@ -1,0 +1,98 @@
+/* =====================================================
+   মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+   SUPABASE DATABASE CONFIGURATION
+===================================================== */
+
+
+/*
+   ⚠️ নিচের দুটি জায়গায় আপনার Supabase-এর তথ্য বসাতে হবে।
+
+   SUPABASE_URL
+   SUPABASE_ANON_KEY
+
+   এগুলো Supabase Project তৈরি করার পর পাওয়া যাবে।
+*/
+
+
+const SUPABASE_URL =
+    "YOUR_SUPABASE_PROJECT_URL";
+
+
+const SUPABASE_ANON_KEY =
+    "YOUR_SUPABASE_ANON_KEY";
+
+
+/* =====================================================
+   SUPABASE CLIENT
+===================================================== */
+
+let supabaseClient = null;
+
+
+function initializeSupabase() {
+
+    if (
+        SUPABASE_URL ===
+            "YOUR_SUPABASE_PROJECT_URL"
+        ||
+        SUPABASE_ANON_KEY ===
+            "YOUR_SUPABASE_ANON_KEY"
+    ) {
+
+        console.warn(
+            "Supabase এখনো Configure করা হয়নি।"
+        );
+
+        return null;
+    }
+
+
+    if (
+        typeof window.supabase ===
+        "undefined"
+    ) {
+
+        console.error(
+            "Supabase Library পাওয়া যায়নি।"
+        );
+
+        return null;
+    }
+
+
+    supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_ANON_KEY
+        );
+
+
+    return supabaseClient;
+}
+
+
+/* =====================================================
+   DATABASE STATUS
+===================================================== */
+
+function isDatabaseConnected() {
+
+    return (
+        supabaseClient !== null
+    );
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        initializeSupabase();
+
+    }
+);
