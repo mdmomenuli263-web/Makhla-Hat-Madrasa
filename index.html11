@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা">
+
+    <meta name="theme-color"
+          content="#07562f">
+
+    <link rel="manifest"
+          href="manifest.json">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <title>
+        মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+    </title>
+
+</head>
+
+
+<body>
+
+
+<!-- ==============================
+     TOP BAR
+============================== -->
+
+<div class="topbar">
+
+    🕌 আল্লাহর নামে শুরু করছি
+    •
+    দ্বীনি ও নৈতিক শিক্ষার আলোকে পথচলা
+
+</div>
+
+
+
+<!-- ==============================
+     HEADER
+============================== -->
+
+<header>
+
+    <div class="container">
+
+        <div class="header-content">
+
+            <img
+                src="logo.png"
+                alt="মাদ্রাসার লোগো"
+                class="logo"
+            >
+
+            <div class="school-name">
+
+                <h1 id="schoolName">
+                    মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+                </h1>
+
+                <p id="tagline">
+                    শিক্ষা • শৃঙ্খলা • আদর্শ • সফলতা
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==============================
+     NAVIGATION
+============================== -->
+
+<nav>
+
+    <div class="container">
+
+        <div class="nav-menu">
+
+            <a href="#home">🏠 হোম</a>
+
+            <a href="#about">📖 আমাদের সম্পর্কে</a>
+
+            <a href="#education">📚 শিক্ষাব্যবস্থা</a>
+
+            <a href="#teachers">👨‍🏫 শিক্ষকবৃন্দ</a>
+
+            <a href="#notice">📢 নোটিশ</a>
+
+            <a href="#gallery">🖼️ গ্যালারি</a>
+
+            <a href="#admission">📝 ভর্তি</a>
+
+            <a href="#contact">📞 যোগাযোগ</a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ==============================
+     MAIN
+============================== -->
+
+<main id="home">
+
+
+
+<!-- ==============================
+     HERO
+============================== -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content fade-in">
+
+            <span class="badge">
+                بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+            </span>
+
+            <h2 id="heroTitle">
+                জ্ঞান অর্জন করো,
+                <br>
+                আলোকিত করো জীবন
+            </h2>
+
+            <p id="heroText">
+
+                কুরআন ও সুন্নাহভিত্তিক শিক্ষা,
+                নৈতিকতা ও আদর্শ মানুষ গড়ার
+                লক্ষ্যে আমাদের এই পথ চলা।
+
+            </p>
+
+
+            <div class="buttons">
+
+                <a
+                    href="#admission"
+                    class="btn btn-gold"
+                >
+                    📝 ভর্তি তথ্য
+                </a>
+
+                <a
+                    href="#about"
+                    class="btn btn-white"
+                >
+                    আমাদের সম্পর্কে
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==============================
+     FEATURES
+============================== -->
+
+<div class="container">
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📖
+            </div>
+
+            <h3>
+                কুরআন শিক্ষা
+            </h3>
+
+            <p>
+                বিশুদ্ধভাবে কুরআন শেখার ব্যবস্থা
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🕌
+            </div>
+
+            <h3>
+                দ্বীনি শিক্ষা
+            </h3>
+
+            <p>
+                কুরআন ও সুন্নাহভিত্তিক শিক্ষা
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🌱
+            </div>
+
+            <h3>
+                নৈতিক শিক্ষা
+            </h3>
+
+            <p>
+                সুন্দর চরিত্র ও আদর্শ গঠনে গুরুত্ব
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🎓
+            </div>
+
+            <h3>
+                আধুনিক শিক্ষা
+            </h3>
+
+            <p>
+                প্রয়োজনীয় সাধারণ শিক্ষার সমন্বয়
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- ==============================
+     ABOUT
+============================== -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                আমাদের সম্পর্কে
+            </h2>
+
+            <p>
+                মাদ্রাসা সম্পর্কে সংক্ষিপ্ত পরিচিতি
+            </p>
+
+        </div>
+
+
+        <div class="two-column">
+
+
+            <div class="box">
+
+                <div class="box-title">
+                    🏫 আমাদের মাদ্রাসা
+                </div>
+
+                <div class="box-content">
+
+                    <p id="aboutText">
+
+                        মাকলাহাট দারুল কুরআন ইসলামিয়া
+                        মাদ্রাসা একটি দ্বীনি ও নৈতিক
+                        শিক্ষাপ্রতিষ্ঠান।
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="box">
+
+                <div class="box-title">
+                    🌟 আমাদের লক্ষ্য
+                </div>
+
+                <div class="box-content">
+
+                    <p>
+                        কুরআন ও সুন্নাহর আলোকে
+                        জ্ঞানী, নৈতিক ও আদর্শ
+                        মানুষ গড়ে তোলা।
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==============================
+     EDUCATION
+============================== -->
+
+<section id="education">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                📚 শিক্ষাব্যবস্থা
+            </h2>
+
+            <p>
+                আমাদের বিভিন্ন শিক্ষা বিভাগ
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <!-- script.js এখানে তথ্য দেখাবে -->
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==============================
+     TEACHERS
+============================== -->
+
+<section id="teachers">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                👨‍🏫 শিক্ষকবৃন্দ
+            </h2>
+
+            <p>
+                আমাদের সম্মানিত শিক্ষকবৃন্দ
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <!-- script.js এখানে তথ্য দেখাবে -->
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==============================
+     NOTICE
+============================== -->
+
+<section id="notice">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                📢 নোটিশ বোর্ড
+            </h2>
+
+            <p>
+                গুরুত্বপূর্ণ ঘোষণা ও সংবাদ
+            </p>
+
+        </div>
+
+
+        <div class="box">
+
+            <div class="box-title">
+                📢 সর্বশেষ নোটিশ
+            </div>
+
+
+            <!--
+                গুরুত্বপূর্ণ:
+                এখানে ID "noticeContent"
+                ব্যবহার করা হয়েছে।
+            -->
+
+            <div
+                class="box-content"
+                id="noticeContent"
+            >
+
+                <!-- script.js নোটিশ দেখাবে -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==============================
+     GALLERY
+============================== -->
+
+<section id="gallery">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                🖼️ ফটো গ্যালারি
+            </h2>
+
+            <p>
+                আমাদের মাদ্রাসার বিভিন্ন মুহূর্ত
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <!-- script.js ছবি দেখাবে -->
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==============================
+     ADMISSION
+============================== -->
+
+<section
+    id="admission"
+    class="admission"
+>
+
+    <div class="container">
+
+        <div class="admission-content">
+
+
+            <div>
+
+                <h2>
+                    📝 ভর্তি চলছে
+                </h2>
+
+                <p id="admissionText">
+
+                    নতুন শিক্ষাবর্ষে ভর্তি
+                    সংক্রান্ত তথ্য জানতে
+                    আমাদের সাথে যোগাযোগ করুন।
+
+                </p>
+
+            </div>
+
+
+            <a
+                href="#contact"
+                class="btn btn-gold"
+            >
+                📞 যোগাযোগ করুন
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==============================
+     CONTACT
+============================== -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                📞 যোগাযোগ
+            </h2>
+
+            <p>
+                আমাদের সাথে যোগাযোগ করুন
+            </p>
+
+        </div>
+
+
+        <div class="contact">
+
+
+            <div class="box">
+
+                <div class="box-title">
+                    📍 যোগাযোগের তথ্য
+                </div>
+
+
+                <div class="box-content">
+
+
+                    <p>
+
+                        📍
+
+                        <strong>
+                            ঠিকানা:
+                        </strong>
+
+                        <span id="address">
+                            মাকলাহাট, নিয়ামতপুর, নওগাঁ
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        📞
+
+                        <strong>
+                            মোবাইল:
+                        </strong>
+
+                        <span id="phone">
+                            01712-345678
+                        </span>
+
+                    </p>
+
+
+                    <p>
+
+                        ✉️
+
+                        <strong>
+                            ই-মেইল:
+                        </strong>
+
+                        <span id="email">
+                            example@email.com
+                        </span>
+
+                    </p>
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class="map">
+
+                <div>
+
+                    <h3>
+                        📍 আমাদের অবস্থান
+                    </h3>
+
+                    <p>
+                        Google Maps লোকেশন
+                        এখানে যুক্ত করা যাবে।
+                    </p>
+
+                    <br>
+
+                    <a
+                        href="https://maps.google.com/"
+                        target="_blank"
+                        rel="noopener"
+                        class="btn btn-gold"
+                    >
+                        🗺️ Google Maps খুলুন
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+</main>
+
+
+
+<!-- ==============================
+     FOOTER
+============================== -->
+
+<footer>
+
+    <div class="container">
+
+
+        <div class="arabic">
+
+            وَقُلْ رَبِّ زِدْنِي عِلْمًا
+
+        </div>
+
+
+        <p>
+            জ্ঞান বৃদ্ধির জন্য আল্লাহর কাছে প্রার্থনা করি।
+        </p>
+
+
+        <div class="social">
+
+
+            <a
+                id="facebook"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+            >
+                f
+            </a>
+
+
+            <a
+                id="youtube"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+            >
+                ▶
+            </a>
+
+
+            <a
+                id="telegram"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                aria-label="Telegram"
+            >
+                ✈
+            </a>
+
+
+            <a
+                id="whatsapp"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+            >
+                ☎
+            </a>
+
+
+        </div>
+
+
+        <br>
+
+
+        <small>
+
+            © 2026
+            মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+            — সর্বস্বত্ব সংরক্ষিত
+
+        </small>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- ==============================
+     ADMIN BUTTON
+============================== -->
+
+<a
+    href="admin.html"
+    class="admin-button"
+>
+    ⚙️ Admin
+</a>
+
+
+
+<!-- ==============================
+     JAVASCRIPT
+============================== -->
+
+<script src="data.js"></script>
+
+<script src="config.js"></script>
+
+<script src="supabase-loader.js"></script>
+
+<script src="supabase-config.js"></script>
+
+<script src="database.js"></script>
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
