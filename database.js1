@@ -1,0 +1,245 @@
+/* =====================================================
+   মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+   DATABASE MANAGER
+===================================================== */
+
+
+/* =====================================================
+   DATABASE TABLE
+===================================================== */
+
+const DATABASE_TABLE = "website_data";
+
+
+/* =====================================================
+   LOAD WEBSITE DATA
+===================================================== */
+
+async function loadOnlineData() {
+
+    if (!supabaseClient) {
+
+        console.warn(
+            "Database connected নয়।"
+        );
+
+        return null;
+    }
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from(DATABASE_TABLE)
+                .select("data")
+                .eq("id", 1)
+                .single();
+
+
+        if (error) {
+
+            console.error(
+                "Database Load Error:",
+                error
+            );
+
+            return null;
+        }
+
+
+        if (!data) {
+
+            return null;
+        }
+
+
+        return data.data;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Online Data Error:",
+            error
+        );
+
+        return null;
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE WEBSITE DATA
+===================================================== */
+
+async function saveOnlineData(data) {
+
+    if (!supabaseClient) {
+
+        alert(
+            "❌ Database এখনো সংযুক্ত হয়নি।"
+        );
+
+        return false;
+    }
+
+
+    try {
+
+        const { error } =
+            await supabaseClient
+                .from(DATABASE_TABLE)
+                .upsert({
+
+                    id: 1,
+
+                    data: data,
+
+                    updated_at:
+                        new Date().toISOString()
+
+                });
+
+
+        if (error) {
+
+            console.error(
+                "Database Save Error:",
+                error
+            );
+
+            alert(
+                "❌ তথ্য সংরক্ষণ করা যায়নি।"
+            );
+
+            return false;
+        }
+
+
+        alert(
+            "✅ তথ্য অনলাইনে সংরক্ষণ হয়েছে!"
+        );
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Save Error:",
+            error
+        );
+
+        alert(
+            "❌ Database Error হয়েছে।"
+        );
+
+        return false;
+
+    }
+
+}
+
+
+/* =====================================================
+   GET DATA WITH FALLBACK
+===================================================== */
+
+async function getWebsiteDataOnline() {
+
+    const onlineData =
+        await loadOnlineData();
+
+
+    if (onlineData) {
+
+        return onlineData;
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =====================================================
+   UPDATE LOCAL + ONLINE
+===================================================== */
+
+async function saveWebsiteDataEverywhere(data) {
+
+    try {
+
+        localStorage.setItem(
+
+            "madrasaWebsiteData",
+
+            JSON.stringify(data)
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.warn(
+            "Local storage save failed:",
+            error
+        );
+
+    }
+
+
+    return await saveOnlineData(
+        data
+    );
+
+}
+
+
+/* =====================================================
+   DATABASE TEST
+===================================================== */
+
+async function testDatabaseConnection() {
+
+    if (!supabaseClient) {
+
+        console.log(
+            "❌ Supabase connected নয়।"
+        );
+
+        return false;
+
+    }
+
+
+    const data =
+        await loadOnlineData();
+
+
+    if (data) {
+
+        console.log(
+            "✅ Database connection সফল।"
+        );
+
+        return true;
+
+    }
+
+
+    console.log(
+        "⚠️ Database connected, কিন্তু data পাওয়া যায়নি।"
+    );
+
+    return true;
+
+}
