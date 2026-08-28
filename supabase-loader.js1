@@ -1,0 +1,42 @@
+/* =====================================================
+   মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+   SUPABASE LOADER
+===================================================== */
+
+(function () {
+
+    const script = document.createElement("script");
+
+    script.src =
+        "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+
+    script.async = true;
+
+    script.onload = function () {
+
+        console.log(
+            "✅ Supabase Library Loaded"
+        );
+
+        if (
+            typeof initializeSupabase ===
+            "function"
+        ) {
+
+            initializeSupabase();
+
+        }
+
+    };
+
+    script.onerror = function () {
+
+        console.error(
+            "❌ Supabase Library Load করা যায়নি।"
+        );
+
+    };
+
+    document.head.appendChild(script);
+
+})();
