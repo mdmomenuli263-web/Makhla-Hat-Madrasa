@@ -1,0 +1,1754 @@
+/* =====================================================
+   মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+   PROFESSIONAL WEBSITE DESIGN
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap');
+
+
+/* =====================================================
+   ROOT
+===================================================== */
+
+:root {
+
+    --primary: #075b3a;
+    --primary-dark: #043d28;
+    --primary-light: #0b7650;
+
+    --gold: #d6a62c;
+    --gold-light: #f4d477;
+
+    --white: #ffffff;
+    --black: #17201b;
+
+    --text: #33423a;
+    --muted: #718078;
+
+    --background: #f4f8f5;
+    --card: #ffffff;
+
+    --border: #e3ebe6;
+
+    --shadow:
+        0 12px 35px rgba(0, 50, 30, 0.08);
+
+    --shadow-hover:
+        0 18px 45px rgba(0, 50, 30, 0.14);
+
+    --radius: 18px;
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    font-family:
+        'Noto Sans Bengali',
+        Arial,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    line-height:
+        1.8;
+
+    overflow-x:
+        hidden;
+
+}
+
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+
+button,
+input,
+textarea {
+
+    font-family: inherit;
+
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+
+    width: min(
+        1180px,
+        calc(100% - 32px)
+    );
+
+    margin:
+        auto;
+
+}
+
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.topbar {
+
+    background:
+        var(--primary-dark);
+
+    color:
+        rgba(255,255,255,.9);
+
+    text-align:
+        center;
+
+    padding:
+        7px 15px;
+
+    font-size:
+        13px;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+
+    background:
+        rgba(255,255,255,.97);
+
+    border-bottom:
+        1px solid var(--border);
+
+    position:
+        relative;
+
+    z-index:
+        20;
+
+}
+
+
+.header-content {
+
+    min-height:
+        105px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+
+}
+
+
+.logo {
+
+    width:
+        76px;
+
+    height:
+        76px;
+
+    object-fit:
+        contain;
+
+    border-radius:
+        50%;
+
+    background:
+        white;
+
+    padding:
+        4px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.08);
+
+}
+
+
+.school-name h1 {
+
+    color:
+        var(--primary);
+
+    font-size:
+        clamp(20px, 3vw, 31px);
+
+    line-height:
+        1.4;
+
+    font-weight:
+        800;
+
+}
+
+
+.school-name p {
+
+    color:
+        var(--gold);
+
+    font-weight:
+        600;
+
+    font-size:
+        14px;
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+nav {
+
+    background:
+        var(--primary);
+
+    position:
+        sticky;
+
+    top:
+        0;
+
+    z-index:
+        100;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.12);
+
+}
+
+
+.nav-menu {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        3px;
+
+    overflow-x:
+        auto;
+
+}
+
+
+.nav-menu a {
+
+    color:
+        white;
+
+    padding:
+        12px 14px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+
+    white-space:
+        nowrap;
+
+    border-bottom:
+        3px solid transparent;
+
+    transition:
+        .25s;
+
+}
+
+
+.nav-menu a:hover {
+
+    background:
+        rgba(255,255,255,.1);
+
+    color:
+        var(--gold-light);
+
+    border-bottom-color:
+        var(--gold);
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    min-height:
+        570px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    position:
+        relative;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(3,42,27,.94),
+            rgba(3,42,27,.72),
+            rgba(3,42,27,.42)
+        ),
+
+        url("madrasa.jpg")
+        center / cover no-repeat;
+
+    color:
+        white;
+
+}
+
+
+.hero::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        radial-gradient(
+            circle at 80% 40%,
+            rgba(214,166,44,.18),
+            transparent 30%
+        );
+
+}
+
+
+.hero-content {
+
+    position:
+        relative;
+
+    max-width:
+        720px;
+
+    padding:
+        80px 0;
+
+}
+
+
+.badge {
+
+    display:
+        inline-block;
+
+    padding:
+        7px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    background:
+        rgba(255,255,255,.08);
+
+    border-radius:
+        50px;
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        18px;
+
+}
+
+
+.hero h2 {
+
+    font-size:
+        clamp(35px, 6vw, 65px);
+
+    line-height:
+        1.25;
+
+    font-weight:
+        800;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.hero p {
+
+    max-width:
+        650px;
+
+    font-size:
+        17px;
+
+    color:
+        rgba(255,255,255,.9);
+
+}
+
+
+.buttons {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+
+    margin-top:
+        28px;
+
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        7px;
+
+    min-height:
+        48px;
+
+    padding:
+        10px 22px;
+
+    border-radius:
+        10px;
+
+    font-weight:
+        700;
+
+    transition:
+        .25s;
+
+}
+
+
+.btn:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.btn-gold {
+
+    background:
+        var(--gold);
+
+    color:
+        #17200f;
+
+    box-shadow:
+        0 8px 22px rgba(214,166,44,.25);
+
+}
+
+
+.btn-white {
+
+    color:
+        white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    background:
+        rgba(255,255,255,.08);
+
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        18px;
+
+    position:
+        relative;
+
+    margin-top:
+        -55px;
+
+    z-index:
+        5;
+
+}
+
+
+.feature {
+
+    background:
+        var(--card);
+
+    padding:
+        25px 18px;
+
+    text-align:
+        center;
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    border:
+        1px solid var(--border);
+
+    transition:
+        .3s;
+
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        var(--shadow-hover);
+
+}
+
+
+.feature-icon {
+
+    width:
+        58px;
+
+    height:
+        58px;
+
+    margin:
+        auto auto 12px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        16px;
+
+    background:
+        #edf7f1;
+
+    font-size:
+        27px;
+
+}
+
+
+.feature h3 {
+
+    color:
+        var(--primary);
+
+    font-size:
+        17px;
+
+}
+
+
+.feature p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    margin-top:
+        4px;
+
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+section {
+
+    padding:
+        85px 0;
+
+}
+
+
+.section-title {
+
+    text-align:
+        center;
+
+    margin-bottom:
+        42px;
+
+}
+
+
+.section-title h2 {
+
+    color:
+        var(--primary);
+
+    font-size:
+        clamp(25px, 4vw, 37px);
+
+    font-weight:
+        800;
+
+}
+
+
+.section-title h2::after {
+
+    content:
+        "";
+
+    display:
+        block;
+
+    width:
+        55px;
+
+    height:
+        4px;
+
+    background:
+        var(--gold);
+
+    margin:
+        10px auto;
+
+    border-radius:
+        5px;
+
+}
+
+
+.section-title p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+}
+
+
+/* =====================================================
+   BOX
+===================================================== */
+
+.box {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    overflow:
+        hidden;
+
+}
+
+
+.box-title {
+
+    padding:
+        17px 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    color:
+        white;
+
+    font-weight:
+        700;
+
+}
+
+
+.box-content {
+
+    padding:
+        25px;
+
+}
+
+
+/* =====================================================
+   TWO COLUMN
+===================================================== */
+
+.two-column {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        25px;
+
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.cards {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        22px;
+
+}
+
+
+.card {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    padding:
+        25px;
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        .3s;
+
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow-hover);
+
+}
+
+
+.card h3 {
+
+    color:
+        var(--primary);
+
+    margin-bottom:
+        7px;
+
+}
+
+
+.card p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+}
+
+
+/* =====================================================
+   TEACHER IMAGE
+===================================================== */
+
+.teacher-photo {
+
+    width:
+        115px;
+
+    height:
+        115px;
+
+    object-fit:
+        cover;
+
+    border-radius:
+        50%;
+
+    margin:
+        0 auto 15px;
+
+    border:
+        4px solid #edf7f1;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.1);
+
+}
+
+
+/* =====================================================
+   NOTICE
+===================================================== */
+
+.notice {
+
+    padding:
+        17px;
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+.notice:last-child {
+
+    border-bottom:
+        none;
+
+}
+
+
+.notice strong {
+
+    display:
+        block;
+
+    color:
+        var(--primary);
+
+}
+
+
+.notice small {
+
+    display:
+        block;
+
+    color:
+        var(--muted);
+
+}
+
+
+.notice-image {
+
+    margin-top:
+        15px;
+
+    border-radius:
+        12px;
+
+    max-height:
+        400px;
+
+    width:
+        100%;
+
+    object-fit:
+        contain;
+
+    background:
+        #f5f5f5;
+
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        15px;
+
+}
+
+
+.gallery figure {
+
+    overflow:
+        hidden;
+
+    border-radius:
+        15px;
+
+    background:
+        white;
+
+    border:
+        1px solid var(--border);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.gallery img {
+
+    width:
+        100%;
+
+    height:
+        220px;
+
+    object-fit:
+        cover;
+
+    transition:
+        .4s;
+
+}
+
+
+.gallery figure:hover img {
+
+    transform:
+        scale(1.07);
+
+}
+
+
+.gallery figcaption {
+
+    padding:
+        9px;
+
+    font-size:
+        13px;
+
+    color:
+        var(--text);
+
+}
+
+
+/* =====================================================
+   ADMISSION
+===================================================== */
+
+.admission {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary)
+        );
+
+    color:
+        white;
+
+}
+
+
+.admission-content {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        25px;
+
+}
+
+
+.admission h2 {
+
+    font-size:
+        clamp(25px, 4vw, 38px);
+
+}
+
+
+.admission p {
+
+    color:
+        rgba(255,255,255,.85);
+
+    margin-top:
+        8px;
+
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        25px;
+
+}
+
+
+.contact p {
+
+    padding:
+        11px 0;
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+.map {
+
+    min-height:
+        300px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    text-align:
+        center;
+
+    border-radius:
+        var(--radius);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #e8f4ed,
+            #f9f4df
+        );
+
+}
+
+
+/* =====================================================
+   RESULT SEARCH
+===================================================== */
+
+.result-search {
+
+    max-width:
+        650px;
+
+    margin:
+        0 auto;
+
+    background:
+        white;
+
+    padding:
+        25px;
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.result-search input {
+
+    width:
+        100%;
+
+    height:
+        52px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        10px;
+
+    padding:
+        0 15px;
+
+    outline:
+        none;
+
+    font-size:
+        15px;
+
+}
+
+
+.result-search input:focus {
+
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(7,91,58,.1);
+
+}
+
+
+/* =====================================================
+   RESULT TABLE
+===================================================== */
+
+.result-table {
+
+    width:
+        100%;
+
+    border-collapse:
+        collapse;
+
+    margin-top:
+        20px;
+
+}
+
+
+.result-table th {
+
+    background:
+        var(--primary);
+
+    color:
+        white;
+
+}
+
+
+.result-table th,
+.result-table td {
+
+    padding:
+        11px;
+
+    border:
+        1px solid var(--border);
+
+    text-align:
+        center;
+
+}
+
+
+.result-table tr:nth-child(even) {
+
+    background:
+        #f6faf7;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    background:
+        #032c1d;
+
+    color:
+        rgba(255,255,255,.8);
+
+    text-align:
+        center;
+
+    padding:
+        55px 0 25px;
+
+}
+
+
+.arabic {
+
+    font-size:
+        25px;
+
+    color:
+        var(--gold-light);
+
+    margin-bottom:
+        12px;
+
+}
+
+
+.social {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    margin:
+        25px 0;
+
+}
+
+
+.social a {
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    border-radius:
+        50%;
+
+    transition:
+        .25s;
+
+}
+
+
+.social a:hover {
+
+    background:
+        var(--gold);
+
+    color:
+        #17200f;
+
+}
+
+
+/* =====================================================
+   ADMIN BUTTON
+===================================================== */
+
+.admin-button {
+
+    position:
+        fixed;
+
+    right:
+        18px;
+
+    bottom:
+        18px;
+
+    z-index:
+        200;
+
+    background:
+        var(--primary);
+
+    color:
+        white;
+
+    padding:
+        10px 15px;
+
+    border-radius:
+        50px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.2);
+
+    font-size:
+        13px;
+
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+.fade-in {
+
+    animation:
+        fadeIn .8s ease both;
+
+}
+
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .features {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .cards {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .gallery {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .container {
+
+        width:
+            min(
+                100% - 22px,
+                1180px
+            );
+
+    }
+
+
+    .header-content {
+
+        min-height:
+            85px;
+
+    }
+
+
+    .logo {
+
+        width:
+            58px;
+
+        height:
+            58px;
+
+    }
+
+
+    .school-name h1 {
+
+        font-size:
+            17px;
+
+    }
+
+
+    .school-name p {
+
+        font-size:
+            11px;
+
+    }
+
+
+    .nav-menu {
+
+        justify-content:
+            flex-start;
+
+    }
+
+
+    .nav-menu a {
+
+        padding:
+            10px 11px;
+
+        font-size:
+            12px;
+
+    }
+
+
+    .hero {
+
+        min-height:
+            520px;
+
+    }
+
+
+    .hero-content {
+
+        padding:
+            60px 0;
+
+    }
+
+
+    .hero h2 {
+
+        font-size:
+            34px;
+
+    }
+
+
+    .hero p {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .features {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:
+            10px;
+
+        margin-top:
+            -35px;
+
+    }
+
+
+    .feature {
+
+        padding:
+            17px 8px;
+
+    }
+
+
+    .feature-icon {
+
+        width:
+            48px;
+
+        height:
+            48px;
+
+        font-size:
+            22px;
+
+    }
+
+
+    .feature h3 {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .feature p {
+
+        font-size:
+            11px;
+
+    }
+
+
+    section {
+
+        padding:
+            60px 0;
+
+    }
+
+
+    .two-column,
+    .contact {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .cards {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .gallery {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            9px;
+
+    }
+
+
+    .gallery img {
+
+        height:
+            150px;
+
+    }
+
+
+    .admission-content {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .box-content {
+
+        padding:
+            18px;
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media (max-width: 400px) {
+
+    .features {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .gallery {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .gallery img {
+
+        height:
+            220px;
+
+    }
+
+
+    .buttons {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .btn {
+
+        width:
+            100%;
+
+    }
+
+}
