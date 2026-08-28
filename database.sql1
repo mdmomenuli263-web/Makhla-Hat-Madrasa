@@ -1,0 +1,96 @@
+-- =====================================================
+-- মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা
+-- WEBSITE DATABASE
+-- =====================================================
+
+
+-- পুরোনো টেবিল থাকলে মুছে ফেলবে
+DROP TABLE IF EXISTS website_data;
+
+
+-- নতুন টেবিল তৈরি
+CREATE TABLE website_data (
+
+    id BIGINT PRIMARY KEY,
+
+    data JSONB NOT NULL,
+
+    updated_at TIMESTAMPTZ
+        DEFAULT NOW()
+
+);
+
+
+-- প্রথম ডাটা
+INSERT INTO website_data (
+    id,
+    data
+)
+
+VALUES (
+
+    1,
+
+    '{
+        "schoolName": "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা",
+
+        "tagline": "শিক্ষা • শৃঙ্খলা • আদর্শ • সফলতা",
+
+        "phone": "01712-345678",
+
+        "email": "example@email.com",
+
+        "address": "মাকলাহাট, নিয়ামতপুর, নওগাঁ",
+
+        "heroTitle": "জ্ঞান অর্জন করো,<br>আলোকিত করো জীবন",
+
+        "heroText": "কুরআন ও সুন্নাহভিত্তিক শিক্ষা, নৈতিকতা ও আদর্শ মানুষ গড়ার লক্ষ্যে আমাদের এই পথ চলা।",
+
+        "aboutText": "মাকলাহাট দারুল কুরআন ইসলামিয়া মাদ্রাসা একটি দ্বীনি ও নৈতিক শিক্ষাপ্রতিষ্ঠান।",
+
+        "admissionText": "নতুন শিক্ষাবর্ষে ভর্তি সংক্রান্ত তথ্য জানতে আমাদের সাথে যোগাযোগ করুন।",
+
+        "notices": [],
+
+        "education": [],
+
+        "teachers": [],
+
+        "gallery": [],
+
+        "social": {
+            "facebook": "#",
+            "youtube": "#",
+            "telegram": "#",
+            "whatsapp": "#"
+        }
+    }'::jsonb,
+
+    NOW()
+
+);
+
+
+-- =====================================================
+-- ROW LEVEL SECURITY
+-- =====================================================
+
+ALTER TABLE website_data
+ENABLE ROW LEVEL SECURITY;
+
+
+-- ওয়েবসাইট থেকে তথ্য পড়ার অনুমতি
+CREATE POLICY "Public can read website data"
+
+ON website_data
+
+FOR SELECT
+
+TO anon
+
+USING (true);
+
+
+-- =====================================================
+-- শেষ
+-- =====================================================
